@@ -1,0 +1,25 @@
+<h1 align="center">Please Sign Up</h1>
+
+<form method="post" action="/signup" align="center"> 
+
+	<p> Full name: <br />
+	<input type="text" placeholder="eg. Jay Garrick" name="user[fullname]"><br></p>
+	
+	<p> Username: <br />
+	<input type="text" placeholder="eg. Flash" name="user[username]"><br /></p>
+
+	<p> Email: <br />
+	<input type="Email" placeholder="eg. flash@gmail.com" name="user[email]"><br /></p>
+	
+	<p> Password: <br />
+	<input type="password" placeholder="password" name="user[password]"><br /></p>
+	<input type="submit" value="Sign Up">
+</form>
+
+<hr />
+
+<% if @user && !@user.errors.empty? %>
+ <% @user.errors.full_messages.each do |e| %>
+    <p align="center"><%= e %></p>
+  <% end %>
+<% end %>

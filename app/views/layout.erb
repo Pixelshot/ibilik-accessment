@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>iBilik</title>
+		<link href="/css/application.css" rel="stylesheet">
+    <script type="text/javascript" href="js/application.js"></script>
+	</head>
+
+<body>
+	<%= yield %>
+	<hr />
+	<% if user_logged_in? %>
+	<% @user = current_user %>
+		<form action="/logout" method="post" align="center">
+			<input type="hidden" name="_method" value="delete">
+			<input type="submit" value="Logout">
+		</form>
+	<% end %>
+</body>
+</html>

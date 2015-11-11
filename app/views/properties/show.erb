@@ -1,0 +1,15 @@
+<h3>Description: <%= @property.description %></h3>
+<h3>Price: <%= @property.price %></h3>
+<h3>Location: <%= @property.location %></h3>
+	<% if @property.user.id == current_user.id %>
+	<p><a href="/properties/<%= @property.id %>/edit">Update</a></p>
+	<br />
+		<form action="/properties/<%= @property.id %>" method="post">
+			<input type="hidden" name ="_method" value="delete">
+			<input type="submit" value="delete">
+	<% else %>
+		<form action="/properties/<%= @property.id %>/comments/new" method="get">
+			<input type="hidden" name="get" value="comment">
+			<input type="submit" value="Enquire">
+		</form>
+		<% end %>

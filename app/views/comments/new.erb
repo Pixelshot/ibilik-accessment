@@ -1,0 +1,16 @@
+<h2><%= @property.description %></h2>
+	<% @user_property = User.find_by(id: @property.user_id)%>
+<h5>asked by <%= @user_property.username %></h5>
+
+<h2>Comments:</h2>
+
+<% if @comment && !@comment.errors.empty %>
+	<% @comment.errors.full_messages.each do |e| %>
+	<p><%= e %></p>
+	<% end %>
+<% end %> 
+
+<form action="/properties/<%= @property.id %>/comments" method="post">
+	<textarea name="body" row="5" cols="30"></textarea><br />
+	<input type="submit" value="Submit Comment">
+</form>

@@ -1,2 +1,16 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<% if session[:user_id].nil? %>
+  <h1 align="center">Welcome to ibilik! Please sign up or login</h1>
+  <p align="center"><a href="/signup">Sign Up!</a><br />
+  <a href="/login">Log In!</a></p>
+<% else %>
+  <h3>Welcome back <%= @user.username %>! </h3>
+  <a href="/properties/new">Create a new Property</a>
+
+  <h2>Latest Properties:</h2>
+  <% @properties.each_with_index do |p, index| %>
+  <% user = User.find_by(id: p.user.id) %>
+  <a href="/properties/<%= p.id %>">
+  	<p><%= "#{index + 1}. #{p.description}" + "@" + "#{p.location}" %> <%= "--" + "#{user.username}" %></p>
+  </a>
+  <% end %>
+  <% end %>

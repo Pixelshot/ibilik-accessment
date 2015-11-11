@@ -1,0 +1,18 @@
+<h1>Create a new property!</h1>
+
+<% if @property && !@property.errors.empty? %>
+	<% @property.errors.full_messages.each do |x| %>
+	<p><%= x %></p>
+	<% end %>
+<% end %>	
+
+<form action="/properties" method="post">
+	<textarea name="property[description]" rows="5" cols="30">
+		</textarea>
+		<p> Price: <br />
+	<input type="text" placeholder="eg. RM 10" name="property[price]"><br></p>
+	
+	<p> Location: <br />
+	<input type="text" placeholder="eg. Cyberjaya" name="property[location]"><br /></p>
+		<p><input type="submit" value="Submit!"></p>
+	</form>
